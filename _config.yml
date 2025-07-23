@@ -25,9 +25,9 @@ author:
   avatar           : "profile.jpg"
   name             : "TU JUNLING"
   pronouns         : # example: "she/her"  
-  bio              : "UG at SUSTech, China. Interested in Computer Vision, Machine Learning, and Artificial Intelligence."
+  bio              : "UG at Southern University of Science and Technology (SUSTech), China. Interested in Computer Vision, Machine Learning, and Artificial Intelligence."
   location         : "Shenzhen, China"
-  employer         : "Southern University of \nScience and Technology (SUSTech), China"
+  employer         : "SUSTech"
   uri              : # URL
   email            : "junling.tu@qq.com" 
 
