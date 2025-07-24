@@ -86,7 +86,8 @@ function loadContent(section) {
 
         case 'projects':
             const projectsContainer = document.createElement('div');
-            projectsContainer.className = 'grid grid-cols-1 md:grid-cols-2 gap-6';
+            // 修改为单列展示
+            projectsContainer.className = 'grid grid-cols-1 gap-6';
 
             sectionConfig.items.forEach(project => {
                 const projectCard = document.createElement('div');
@@ -110,6 +111,7 @@ function loadContent(section) {
         case 'research':
         case 'internships':
         case 'publications':
+            // 保持单列（原本就是 space-y-8 单列）
             const itemsContainer = document.createElement('div');
             itemsContainer.className = 'space-y-8';
 
