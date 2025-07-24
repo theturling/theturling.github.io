@@ -69,34 +69,49 @@ function loadContent(section) {
     const sectionConfig = config.content[section];
     contentArea.innerHTML = '';
 
-    // 创建标题
+
+    // 创建标题和右上角时间容器
+    const titleWrapper = document.createElement('div');
+    titleWrapper.className = 'flex justify-between items-center mb-6 border-b pb-2';
     const titleElement = document.createElement('h2');
-    titleElement.className = 'text-3xl font-bold mb-6 border-b pb-2';
+    titleElement.className = 'text-3xl font-bold';
     titleElement.textContent = sectionConfig[currentLang === 'zh' ? 'title' : 'titleEn'];
-    contentArea.appendChild(titleElement);
+    titleWrapper.appendChild(titleElement);
+
+    // 右上角时间（仅部分页面有）
+    let periodText = '';
+    if (section === 'projects' || section === 'research' || section === 'internships' || section === 'publications') {
+        // 留空，具体每个item渲染时处理
+    } else if (section === 'cv') {
+        // 简历页面无时间
+    } else if (section === 'home') {
+        // 首页无时间
+    }
+    // 添加标题容器
+    contentArea.appendChild(titleWrapper);
 
     // 根据不同部分加载内容
     switch (section) {
-        case 'home':
+        case 'home': {
             const homeContent = document.createElement('div');
             homeContent.className = 'prose dark:prose-invert max-w-none';
             homeContent.innerHTML = sectionConfig[currentLang === 'zh' ? 'content' : 'contentEn'];
             contentArea.appendChild(homeContent);
             break;
-
-        case 'projects':
+        }
+        case 'projects': {
             const projectsContainer = document.createElement('div');
-            // 修改为单列展示
             projectsContainer.className = 'grid grid-cols-1 gap-6';
-
             sectionConfig.items.forEach(project => {
                 const projectCard = document.createElement('div');
                 projectCard.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow';
                 projectCard.innerHTML = `
-                    <h3 class="text-xl font-semibold mb-2">${project[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-semibold">${project[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
+                        <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${project[currentLang === 'zh' ? 'period' : 'periodEn']}</span>
+                    </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-2">${project[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">${project[currentLang === 'zh' ? 'period' : 'periodEn']}</p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2 mb-2">
                         ${project[currentLang === 'zh' ? 'tags' : 'tagsEn'].map(tag => `
                             <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">${tag}</span>
                         `).join('')}
@@ -104,54 +119,58 @@ function loadContent(section) {
                 `;
                 projectsContainer.appendChild(projectCard);
             });
-
             contentArea.appendChild(projectsContainer);
             break;
-
+        }
         case 'research':
         case 'internships':
-        case 'publications':
-            // 保持单列（原本就是 space-y-8 单列）
+        case 'publications': {
             const itemsContainer = document.createElement('div');
             itemsContainer.className = 'space-y-8';
-
             sectionConfig.items.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
-
-                // 根据不同类型设置不同的HTML结构
                 if (section === 'research') {
                     itemElement.innerHTML = `
-                        <h3 class="text-xl font-semibold mb-2">${item[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">${item[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
+                            <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${item[currentLang === 'zh' ? 'period' : 'periodEn']}</span>
+                        </div>
                         <p class="text-gray-600 dark:text-gray-300 mb-2">${item[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
-                        <div class="text-sm text-gray-500 dark:text-gray-400">
-                            <p>${item[currentLang === 'zh' ? 'period' : 'periodEn']} | ${item[currentLang === 'zh' ? 'institution' : 'institutionEn']}</p>
+                        <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            <span>${item[currentLang === 'zh' ? 'institution' : 'institutionEn']}</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            ${(item[currentLang === 'zh' ? 'tags' : 'tagsEn'] || []).map(tag => `
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">${tag}</span>
+                            `).join('')}
                         </div>
                     `;
                 } else if (section === 'internships') {
                     itemElement.innerHTML = `
-                        <div class="flex justify-between items-start mb-2">
+                        <div class="flex justify-between items-center mb-2">
                             <h3 class="text-xl font-semibold">${item[currentLang === 'zh' ? 'institution' : 'institutionEn']}</h3>
                             <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${item[currentLang === 'zh' ? 'period' : 'periodEn']}</span>
                         </div>
                         <h4 class="text-lg text-primary mb-3">${item[currentLang === 'zh' ? 'name' : 'nameEn']}</h4>
-                        <p class="text-gray-600 dark:text-gray-300">${item[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-2">${item[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
                     `;
                 } else if (section === 'publications') {
                     itemElement.innerHTML = `
-                        <h3 class="text-xl font-semibold mb-2">${item[currentLang === 'zh' ? 'title' : 'titleEn']}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-2">${item.authors}</p>
-                        <p class="text-gray-600 dark:text-gray-300">${item[currentLang === 'zh' ? 'journal' : 'journalEn']}, ${item.year}</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">${item[currentLang === 'zh' ? 'title' : 'titleEn']}</h3>
+                            <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${item.year || ''}</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-2">${item.authors || ''}</p>
+                        <p class="text-gray-600 dark:text-gray-300">${item[currentLang === 'zh' ? 'journal' : 'journalEn'] || ''}</p>
                     `;
                 }
-
                 itemsContainer.appendChild(itemElement);
             });
-
             contentArea.appendChild(itemsContainer);
             break;
-
-        case 'cv':
+        }
+        case 'cv': {
             const cvContainer = document.createElement('div');
             cvContainer.className = 'text-center py-10';
             cvContainer.innerHTML = `
@@ -167,6 +186,7 @@ function loadContent(section) {
             `;
             contentArea.appendChild(cvContainer);
             break;
+        }
     }
 }
 
