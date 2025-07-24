@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 | 自我介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义主题
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: {
+                            bg: '#1E293B',
+                            text: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .sidebar-width {
+        width: 280px;
+    }
+            .content-width {
+        width: calc(100% - 280px);
+    }
+            body {
+        overflow-x: hidden;
+    }
+            #content {
+        margin-left: 300px;
+        overflow-x: hidden;
+        max-width: calc(100vw - 300px);
+        box-sizing: border-box;
+    }
+            @media (max-width: 768px) {
+                .sidebar-width {
+                    width: 100%;
+                    height: auto;
+                }
+                .content-width {
+                    width: 100%;
+                }
+                #sidebar {
+                    position: static;
+                    margin-bottom: 2rem;
+                }
+                #sidebar .text-center {
+                    display: flex;
+                    align-items: center;
+                    gap: 2rem;
+                    text-align: left;
+                }
+                #sidebar .space-y-4 {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1rem 2rem;
+                }
+                #content {
+                    margin-left: 0 !important;
+                    padding-top: 1rem;
+                    overflow-x: hidden;
+                    max-width: 100vw;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+    <!-- 顶部导航栏 -->
+    <nav id="navigator"
+        class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="#home" class="font-bold text-lg hover:text-primary transition-colors">主页</a>
+                <a href="#projects" class="hover:text-primary transition-colors">项目</a>
+                <a href="#research" class="hover:text-primary transition-colors">研究</a>
+                <a href="#internships" class="hover:text-primary transition-colors">实习</a>
+                <a href="#cv" class="hover:text-primary transition-colors">简历</a>
+                <a href="#publications" class="hover:text-primary transition-colors">发表</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="lang-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fa fa-language"></i>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fa fa-moon-o"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边栏 -->
+    <aside id="sidebar"
+        class="top-16 w-full p-6 sidebar-width transition-all duration-300 md:fixed md:left-0 md:h-[calc(100vh-4rem)] md:w-[280px]">
+        <div class="text-center mb-6">
+            <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary mb-4">
+                <img src="assets/avatar.jpg" alt="头像" class="w-full h-full object-cover">
+            </div>
+            <h1 id="sidebar-name" class="text-2xl font-bold mb-1">张三</h1>
+            <p id="sidebar-title" class="text-gray-600 dark:text-gray-300 italic">计算机科学专业毕业生</p>
+        </div>
+        <div class="space-y-4">
+            <div class="flex items-center">
+                <i class="fa fa-envelope-o w-6 text-primary"></i>
+                <span id="sidebar-email" class="ml-2">zhangsan@example.com</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fa fa-university w-6 text-primary"></i>
+                <span id="sidebar-university" class="ml-2">北京大学</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fa fa-map-marker w-6 text-primary"></i>
+                <span id="sidebar-address" class="ml-2">北京市海淀区</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fa fa-phone w-6 text-primary"></i>
+                <span id="sidebar-phone" class="ml-2">13800138000</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fa fa-github w-6 text-primary"></i>
+                <a id="sidebar-github" href="" class="ml-2 text-blue-500 hover:underline" target="_blank"></a>
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- 主内容区 -->
+    <main id="content" class="pt-20 content-width transition-all duration-300 min-h-screen p-8">
+        <section id="home" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-b pb-2">关于我</h2>
+            <div id="home-content" class="prose dark:prose-invert max-w-none">
+                <p>我是一名对计算机科学充满热情的毕业生，专注于软件开发和人工智能领域。具有扎实的编程基础和解决问题的能力，热衷于学习新技术并将其应用到实际项目中。</p>
+                <p>在大学期间，我参与了多个科研项目和实习，积累了丰富的实践经验。我擅长团队协作，能够快速适应新环境并高效完成任务。</p>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-b pb-2">项目经历</h2>
+            <div id="projects-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 项目内容将通过JavaScript动态加载 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-semibold mb-2">项目名称</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">项目描述内容...</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">Python</span>
+                        <span
+                            class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded">机器学习</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
