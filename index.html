@@ -7,6 +7,7 @@
     <title>个人简历 | 自我介绍</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <script>
         // 配置Tailwind自定义主题
         tailwind.config = {
@@ -28,58 +29,6 @@
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .sidebar-width {
-        width: 280px;
-    }
-            .content-width {
-        width: calc(100% - 280px);
-    }
-            body {
-        overflow-x: hidden;
-    }
-            #content {
-        margin-left: 300px;
-        overflow-x: hidden;
-        max-width: calc(100vw - 300px);
-        box-sizing: border-box;
-    }
-            @media (max-width: 768px) {
-                .sidebar-width {
-                    width: 100%;
-                    height: auto;
-                }
-                .content-width {
-                    width: 100%;
-                }
-                #sidebar {
-                    position: static;
-                    margin-bottom: 2rem;
-                }
-                #sidebar .text-center {
-                    display: flex;
-                    align-items: center;
-                    gap: 2rem;
-                    text-align: left;
-                }
-                #sidebar .space-y-4 {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 1rem 2rem;
-                }
-                #content {
-                    margin-left: 0 !important;
-                    padding-top: 1rem;
-                    overflow-x: hidden;
-                    max-width: 100vw;
-                }
-            }
-        }
-    </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
