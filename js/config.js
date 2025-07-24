@@ -45,10 +45,46 @@ const config = {
             title: "项目经历",
             titleEn: "Projects",
             items: [
-                { name: "机器人大赛视觉项目 - Robomaster机器人大赛", nameEn: "Robotics Competition Vision Project - Robomaster Robotics Competition", description: "基于团队CAF框架，集成深度学习网络，提升系统鲁棒性和精度。优化EKF滤波算法，增强目标跟踪稳定性。搭建ROS框架解决前端崩溃和数据同步问题。负责项目管理、新人培训及多组联调，确保视觉功能可靠。", descriptionEn: "Optimized Deep Learning network in CAF framework, boosting robustness/accuracy. Enhanced EKF filtering for stable tracking. Built ROS framework to fix crashes/data sync. Led project management, training, and cross-team debugging for reliable robot vision.", tags: ["深度学习", "计算机视觉", "C++", "Python"], tagsEn: ["Deep Learning", "Computer Vision", "C++", "Python"], period: "2024.03 - 2024.08", periodEn: "Mar 2024 - Aug 2024" },
-                { name: "人脸风格转换程序 - 深度学习项目", nameEn: "Efficient Face Style Changing Program - Deep Learning", description: "修改StyleGAN2输出以生成可控风格的人脸图像。通过调整模型结构和充分利用Jetson Nano的CPU与GPU资源，优化性能。在高性能PC中引入VGG16特征距离最小化方法以提取实时图像的潜在向量。", descriptionEn: "Modified StyleGAN2 to generate face images with controllable styles. Optimized performance on Jetson Nano by adjusting model structure and maximizing CPU/GPU usage. Introduced a method on high-performance PC to extract latent vectors by minimizing VGG16 feature distance of real-time images.", tags: ["StyleGAN2", "Jetson Nano", "图像风格转换", "Python"], tagsEn: ["StyleGAN2", "Jetson Nano", "Image Style Transfer", "Python"], period: "2024.01 - 2024.03", periodEn: "Jan 2024 - Mar 2024" },
-                { name: "视频会议软件 - 计算机网络项目", nameEn: "Video Conferencing Software - Computer Networks", description: "使用Python的socket库实现TCP与UDP连接：TCP用于文本与控制通信，UDP用于音视频传输。监控视频帧率与延迟并动态调整分辨率与码率以保证流畅性。通过动态分配端口隔离不同会话，支持P2P与客户端-服务器双模式。", descriptionEn: "Implemented TCP and UDP using Python’s socket library: TCP for control/text communication, UDP for audio/video streaming. Monitored frame rate and latency to adjust resolution and bitrate dynamically. Used dynamic port assignment to isolate sessions, supporting both P2P and client-server modes.", tags: ["Python", "计算机网络", "Socket编程", "视频传输"], tagsEn: ["Python", "Computer Networks", "Socket Programming", "Video Streaming"], period: "2023.09 - 2023.12", periodEn: "Sep 2023 - Dec 2023" },
-                { name: "SUSTech VSCode 插件 - 软件工程项目", nameEn: "SUSTech VSCode Extension - Software Engineering", description: "使用TypeScript开发后端，支持SSO登录后从Blackboard抓取并管理课程文件URL。基于VSCode Editor API与Yjs实现局域网协同编辑，支持实时聊天与自动服务器发现。统一团队Git工作流并管理修复流程。", descriptionEn: "Developed backend with TypeScript to crawl and manage course file URLs from Blackboard after SSO login. Implemented LAN-based collaborative editing using VSCode Editor API and Yjs, with real-time chat and automatic server discovery. Standardized Git workflow for bug-fixing team.", tags: ["TypeScript", "VSCode插件", "协同编辑", "Yjs"], tagsEn: ["TypeScript", "VSCode Extension", "Collaborative Editing", "Yjs"], period: "2023.03 - 2023.06", periodEn: "Mar 2023 - Jun 2023" }
+                {
+                    name: "机器人大赛视觉项目 - Robomaster机器人大赛",
+                    nameEn: "Robotics Competition Vision Project - Robomaster Robotics Competition",
+                    description: "基于团队CAF框架，集成深度学习网络，提升系统鲁棒性和精度。优化EKF滤波算法，增强目标跟踪稳定性。搭建ROS框架解决前端崩溃和数据同步问题。负责项目管理、新人培训及多组联调，确保视觉功能可靠。",
+                    descriptionEn: "Optimized Deep Learning network in CAF framework, boosting robustness/accuracy. Enhanced EKF filtering for stable tracking. Built ROS framework to fix crashes/data sync. Led project management, training, and cross-team debugging for reliable robot vision.",
+                    tags: ["深度学习", "计算机视觉", "C++", "Python"],
+                    tagsEn: ["Deep Learning", "Computer Vision", "C++", "Python"],
+                    period: "2024.03 - 2024.08",
+                    periodEn: "Mar 2024 - Aug 2024"
+                },
+                {
+                    name: "人脸风格转换程序 - 深度学习项目",
+                    nameEn: "Efficient Face Style Changing Program - Deep Learning",
+                    description: "修改StyleGAN2输出以生成可控风格的人脸图像。通过调整模型结构和充分利用Jetson Nano的CPU与GPU资源，优化性能。在高性能PC中引入VGG16特征距离最小化方法以提取实时图像的潜在向量。",
+                    descriptionEn: "Modified StyleGAN2 to generate face images with controllable styles. Optimized performance on Jetson Nano by adjusting model structure and maximizing CPU/GPU usage. Introduced a method on high-performance PC to extract latent vectors by minimizing VGG16 feature distance of real-time images.",
+                    tags: ["StyleGAN2", "Jetson Nano", "图像风格转换", "Python"],
+                    tagsEn: ["StyleGAN2", "Jetson Nano", "Image Style Transfer", "Python"],
+                    period: "2024.01 - 2024.03",
+                    periodEn: "Jan 2024 - Mar 2024"
+                },
+                {
+                    name: "视频会议软件 - 计算机网络项目",
+                    nameEn: "Video Conferencing Software - Computer Networks",
+                    description: "使用Python的socket库实现TCP与UDP连接：TCP用于文本与控制通信，UDP用于音视频传输。监控视频帧率与延迟并动态调整分辨率与码率以保证流畅性。通过动态分配端口隔离不同会话，支持P2P与客户端-服务器双模式。",
+                    descriptionEn: "Implemented TCP and UDP using Python’s socket library: TCP for control/text communication, UDP for audio/video streaming. Monitored frame rate and latency to adjust resolution and bitrate dynamically. Used dynamic port assignment to isolate sessions, supporting both P2P and client-server modes.",
+                    tags: ["Python", "计算机网络", "Socket编程", "视频传输"],
+                    tagsEn: ["Python", "Computer Networks", "Socket Programming", "Video Streaming"],
+                    period: "2023.09 - 2023.12",
+                    periodEn: "Sep 2023 - Dec 2023"
+                },
+                {
+                    name: "SUSTech VSCode 插件 - 软件工程项目",
+                    nameEn: "SUSTech VSCode Extension - Software Engineering",
+                    description: "使用TypeScript开发后端，支持SSO登录后从Blackboard抓取并管理课程文件URL。基于VSCode Editor API与Yjs实现局域网协同编辑，支持实时聊天与自动服务器发现。统一团队Git工作流并管理修复流程。",
+                    descriptionEn: "Developed backend with TypeScript to crawl and manage course file URLs from Blackboard after SSO login. Implemented LAN-based collaborative editing using VSCode Editor API and Yjs, with real-time chat and automatic server discovery. Standardized Git workflow for bug-fixing team.",
+                    tags: ["TypeScript", "VSCode插件", "协同编辑", "Yjs"],
+                    tagsEn: ["TypeScript", "VSCode Extension", "Collaborative Editing", "Yjs"],
+                    period: "2023.03 - 2023.06",
+                    periodEn: "Mar 2023 - Jun 2023"
+                }
             ]
         },
 
@@ -58,14 +94,28 @@ const config = {
             titleEn: "Research Experience",
             items: [
                 {
-                    name: "智能科学与技术相关研究",
-                    nameEn: "Research in Intelligent Science and Technology",
-                    description: "参与智能科学与技术专业相关的课程研究项目，关注人工智能和机器学习领域。",
-                    descriptionEn: "Participated in research projects related to Intelligent Science and Technology major, focusing on artificial intelligence and machine learning fields.",
-                    period: "2022.09 - 现在",
-                    periodEn: "Sep 2022 - Present",
-                    institution: "南方科技大学",
-                    institutionEn: "Southern University of Science and Technology"
+                    name: "基于可控扩散模型的OCTA图像生成研究",
+                    nameEn: "Controllable Diffusion Model Methods for OCTA Image Generation",
+                    description: "引入ControlNet与CLIP到扩散模型中，实现对OCTA图像特征的可控生成。通过基于Kullback-Leibler散度与血管连通性的损失函数优化图像细节。利用PCA和t-SNE可视化潜在空间，分析真实与生成图像的分布关系。图像质量相比基线模型在KID指标上提升16.62%，在FID指标上提升48.25%。",
+                    descriptionEn: "Introduced ControlNet and CLIP into the diffusion model to generate OCTA images with controllable features. Optimized vessel details using a new loss function based on Kullback-Leibler divergence and vessel connectivity. Visualized latent space with PCA and t-SNE to analyze the relationship between real and generated images. Improved image quality over the baseline model by 16.62% in KID score and 48.25% in FID score.",
+                    period: "2025.02 - 2025.06",
+                    periodEn: "Feb 2025 - Jun 2025",
+                    institution: "南方科技大学 iMED实验室",
+                    institutionEn: "Southern University of Science and Technology, iMED Group",
+                    tags: ["扩散模型", "CLIP", "ControlNet", "OCTA图像", "PCA", "t-SNE"],
+                    tagsEn: ["Diffusion Model", "CLIP", "ControlNet", "OCTA Imaging", "PCA", "t-SNE"]
+                },
+                {
+                    name: "帕金森小鼠疾病进展预测算法研究",
+                    nameEn: "Disease Progression Prediction Algorithms for PD Mouse Models",
+                    description: "使用VAE与注意力机制解释疾病进展预测中的不确定性。开发并维护疾病进展预测系统的客户端与服务端程序，提升系统的可用性与稳定性。",
+                    descriptionEn: "Explained uncertainty in disease progression prediction using VAE and attention mechanisms. Developed and maintained the client-server system for disease progression prediction, improving usability and robustness.",
+                    period: "2024.09 - 2025.01",
+                    periodEn: "Sept 2024 - Jan 2025",
+                    institution: "南方科技大学 iMED实验室",
+                    institutionEn: "Southern University of Science and Technology, iMED Group",
+                    tags: ["VAE", "注意力机制", "疾病预测", "客户端-服务器", "小鼠模型"],
+                    tagsEn: ["VAE", "Attention Mechanism", "Disease Prediction", "Client-Server", "Mouse Model"]
                 }
             ]
         },

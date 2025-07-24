@@ -22,12 +22,12 @@ function initPage() {
     updateSidebar();
     // 初始化导航栏
     updateNavigator();
-    // 加载默认内容
-    loadContent('home');
     // 初始化事件监听
     initEventListeners();
     // 检查本地存储的主题偏好
     checkThemePreference();
+    // 检查完主题和语言后再加载内容，确保内容语言正确
+    loadContent('home');
 }
 
 // 更新侧边栏内容
