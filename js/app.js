@@ -17,9 +17,11 @@ function initPage() {
     langToggle = document.getElementById('lang-toggle');
     navigatorLinks = document.querySelectorAll('#navigator a');
     contentArea = document.getElementById('content');
-    
+
     // 初始化侧边栏
     updateSidebar();
+    // 初始化导航栏
+    updateNavigator();
     // 加载默认内容
     loadContent('home');
     // 初始化事件监听
@@ -49,6 +51,17 @@ function updateSidebar() {
     sidebarAddress.textContent = config.basicInfo[currentLang === 'zh' ? 'address' : 'addressEn'];
 }
 
+// 更新导航栏文字
+function updateNavigator() {
+    const navLinks = document.querySelectorAll('#navigator a[href^="#"]');
+    navLinks.forEach(link => {
+        const section = link.getAttribute('href').substring(1);
+        if (config.navigation[section]) {
+            link.textContent = config.navigation[section][currentLang];
+        }
+    });
+}
+
 // 加载内容区域
 function loadContent(section) {
     if (!config.content[section]) return;
@@ -63,7 +76,7 @@ function loadContent(section) {
     contentArea.appendChild(titleElement);
 
     // 根据不同部分加载内容
-    switch(section) {
+    switch (section) {
         case 'home':
             const homeContent = document.createElement('div');
             homeContent.className = 'prose dark:prose-invert max-w-none';
@@ -80,7 +93,8 @@ function loadContent(section) {
                 projectCard.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow';
                 projectCard.innerHTML = `
                     <h3 class="text-xl font-semibold mb-2">${project[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">${project[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-2">${project[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">${project[currentLang === 'zh' ? 'period' : 'periodEn']}</p>
                     <div class="flex flex-wrap gap-2">
                         ${project[currentLang === 'zh' ? 'tags' : 'tagsEn'].map(tag => `
                             <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">${tag}</span>
@@ -102,23 +116,23 @@ function loadContent(section) {
             sectionConfig.items.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
-                
+
                 // 根据不同类型设置不同的HTML结构
                 if (section === 'research') {
                     itemElement.innerHTML = `
                         <h3 class="text-xl font-semibold mb-2">${item[currentLang === 'zh' ? 'name' : 'nameEn']}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-2">${item.description}</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-2">${item[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
                         <div class="text-sm text-gray-500 dark:text-gray-400">
-                            <p>${item.period} | ${item.institution}</p>
+                            <p>${item[currentLang === 'zh' ? 'period' : 'periodEn']} | ${item[currentLang === 'zh' ? 'institution' : 'institutionEn']}</p>
                         </div>
                     `;
                 } else if (section === 'internships') {
                     itemElement.innerHTML = `
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold">${item.company}</h3>
-                            <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${item.period}</span>
+                            <h3 class="text-xl font-semibold">${item[currentLang === 'zh' ? 'institution' : 'institutionEn']}</h3>
+                            <span class="text-sm bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">${item[currentLang === 'zh' ? 'period' : 'periodEn']}</span>
                         </div>
-                        <h4 class="text-lg text-primary mb-3">${item[currentLang === 'zh' ? 'position' : 'positionEn']}</h4>
+                        <h4 class="text-lg text-primary mb-3">${item[currentLang === 'zh' ? 'name' : 'nameEn']}</h4>
                         <p class="text-gray-600 dark:text-gray-300">${item[currentLang === 'zh' ? 'description' : 'descriptionEn']}</p>
                     `;
                 } else if (section === 'publications') {
@@ -174,6 +188,7 @@ function toggleLang() {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
     localStorage.setItem('lang', currentLang);
     updateSidebar();
+    updateNavigator();
     // 重新加载当前内容
     const activeLink = document.querySelector('#navigator a.active');
     if (activeLink) {
@@ -186,7 +201,7 @@ function toggleLang() {
 
 // 检查主题偏好
 function checkThemePreference() {
-    if (localStorage.getItem('theme') === 'dark' || 
+    if (localStorage.getItem('theme') === 'dark' ||
         (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
         themeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
@@ -200,6 +215,8 @@ function checkThemePreference() {
     // 检查语言偏好
     if (localStorage.getItem('lang')) {
         currentLang = localStorage.getItem('lang');
+        updateSidebar();
+        updateNavigator();
     }
 }
 
